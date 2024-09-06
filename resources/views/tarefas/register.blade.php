@@ -7,9 +7,14 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card shadow-lg">
                     <div class="card-body">
-                        <h4 class="card-title text-center mb-4">Login</h4>
-                        <form action="{{ route('login') }}" method="POST">
+                        <h4 class="card-title text-center mb-4">Register</h4>
+                        <form action="{{ route('registrar') }}" method="POST">
                             @csrf
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username:</label>
+                                <input type="text" id="username" name="username" class="form-control"
+                                    placeholder="Digite seu username" required>
+                            </div>
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email:</label>
@@ -24,12 +29,9 @@
                             </div>
 
                             <div class="d-flex justify-content-center mt-4">
-                                <button type="submit" class="btn btn-secondary">Entrar</button>
+                                <button type="submit" class="btn btn-secondary">Registrar</button>
                             </div>
 
-                            <div class="text-center mt-3">
-                                <a href="{{ route('registerForm') }}" class="btn btn-link">Cadastrar-se</a>
-                            </div>
                         </form>
                     </div>
                 </div>
