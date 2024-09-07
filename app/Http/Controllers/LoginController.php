@@ -18,13 +18,12 @@ class LoginController extends Controller
 
             !$email || !$password ? throw new Exception("") : "Email ou senha estão vazios";
             $user = new User();
-
             $response = $user->selectUser($email);
 
             if (empty($response)) {
                 throw new Exception("Email não cadastrado", 1);
             }
-            if (!password_verify($password, $response->password)) {
+            if (!password_verify($password, $response[0]->password)) {
                 throw new Exception("A senha está incorreta", 1);
             }
             return redirect()->route("dashboard")->with("user", $response);
