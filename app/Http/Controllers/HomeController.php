@@ -10,11 +10,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('tarefas.index'); // Liste as tarefas aqui
+        return view('login.index'); // Liste as tarefas aqui
     }
 
     public function showRegisterForm()
     {
-        return view("tarefas.register");
+        return view("login.register");
     }
 }
