@@ -8,6 +8,10 @@
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <h4 class="card-title text-center mb-4">Register</h4>
+                        @if (session()->has('login'))
+                            <p class="error-lg">{{ session('login') }}</p>
+                        @endif
+
                         <form action="{{ route('registrar') }}" method="POST">
                             @csrf
                             <div class="mb-3">

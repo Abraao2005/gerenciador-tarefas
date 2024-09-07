@@ -11,5 +11,5 @@ Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get('register', [HomeController::class,"showRegisterForm"])->name("registerForm");
 
 // Login/Register function
-Route::post('login', [HomeController::class,"login"])->name("login");
+Route::post('login', [LoginController::class,"login"])->name("login");
 Route::post("registrar",[LoginController::class,"register"])->name("registrar");
