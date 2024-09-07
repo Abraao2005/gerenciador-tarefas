@@ -60,7 +60,14 @@ class User extends Authenticatable
     public function selectUser($email)
     {
         try {
-            return DB::select("SELECT * from users WHERE email = ? LIMIT 1", [$email])[0];
+            return DB::select("SELECT * from users WHERE email = ? LIMIT 1", [$email]);
+        } catch (PDOException $exp) {
+            throw new Exception($exp->getMessage(), 1);
+        }
+    }
+    public function getUser($id){
+        try {
+            return DB::select("SELECT * from users WHERE id = ? LIMIT 1", [$id]);
         } catch (PDOException $exp) {
             throw new Exception($exp->getMessage(), 1);
         }
