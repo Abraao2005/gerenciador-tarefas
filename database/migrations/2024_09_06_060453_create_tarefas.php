@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tarefas', function (Blueprint $table) {
             $table->id()->autoIncrement()->primary();
+            $table->unsignedBigInteger('userId');
             $table->string("titulo", 50);
             $table->text("descricao")->nullable();
             $table->boolean("status");
