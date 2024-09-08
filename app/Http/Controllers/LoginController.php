@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -43,10 +42,11 @@ class LoginController extends Controller
 
             $password_hash = password_hash($password, PASSWORD_BCRYPT);
             $user = new User();
+            !empty($user->selectUser($email)) ? throw new Exception("Esse email já foi cadastrado") : "";
             $user->insertUser($name, $password_hash, $email);
             return redirect()->route("home")->with("login", "Registro completo");
         } catch (Exception $exp) {
-            return redirect()->route("home")->with("register", $exp->getMessage());
+            return redirect()->route("registerForm")->with("register", $exp->getMessage());
         }
     }
 
